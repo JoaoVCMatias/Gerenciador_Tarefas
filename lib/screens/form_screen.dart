@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gerenciador_tarefas/components/task.dart';
+import 'package:gerenciador_tarefas/data/task_dao.dart';
 import 'package:gerenciador_tarefas/data/task_inherited.dart';
 
 class FormScreen extends StatefulWidget {
@@ -129,22 +131,21 @@ class _FormScreenState extends State<FormScreen> {
                       borderRadius: BorderRadius.circular(10),
                       child: Image.network(imageController.text, errorBuilder:
                           (BuildContext context, Object exeption,
-                              StackTrace? sttackTrace) {
+                          StackTrace? sttackTrace) {
                         return Image.asset('assets/images/semfoto.png');
                       }, fit: BoxFit.cover),
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState!.validate()) {
                         print(nameController.text);
                         print(imageController.text);
                         print(difficultyController.text);
 
-                        TaskInherited.of(widget.taskContext).newTask(
-                            nameController.text,
-                            imageController.text,
-                            int.parse(difficultyController.text));
+                        await TaskDao().save(Task(
+                            nameController.text, imageController.text,
+                            int.parse(difficultyController.text)));
                         ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                                 content: Text('Criando uma nova Tarefa')));

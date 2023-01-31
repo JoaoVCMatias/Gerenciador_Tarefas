@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciador_tarefas/data/task_inherited.dart';
 import 'package:gerenciador_tarefas/screens/form_screen.dart';
-
 import 'screens/initial_screen.dart';
 
 void main() {

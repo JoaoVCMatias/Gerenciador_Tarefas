@@ -1,6 +1,3 @@
-import 'dart:html';
-
-import 'package:flutter/rendering.dart';
 import 'package:gerenciador_tarefas/components/task.dart';
 import 'package:gerenciador_tarefas/data/database.dart';
 import 'package:sqflite/sqflite.dart';
@@ -16,7 +13,7 @@ class TaskDao {
   static const String _difficulty = 'difficulty';
   static const String _image = 'image';
 
-  save(Task tarefa) async {
+   save(Task tarefa) async {
     print('INICIANDO O SAVE: ');
     final Database bancoDeDados = await getDataBase();
     var itemExists = await find(tarefa.nome);
@@ -63,7 +60,7 @@ class TaskDao {
   }
 
   Future<List<Task>> find(String nomeDaTarefa) async {
-    print('ACESSANDO FIND: ');
+    print('ACESSANDO FIND: --- $nomeDaTarefa');
     final Database bancoDeDados = await getDataBase();
     final List<Map<String, dynamic>> result = await bancoDeDados.query(
       _tablename,
