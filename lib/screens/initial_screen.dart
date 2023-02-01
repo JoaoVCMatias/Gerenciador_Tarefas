@@ -17,9 +17,11 @@ class _InitialSceenState extends State<InitialSceen> {
       appBar: AppBar(
         leading: Container(),
         actions: [
-          IconButton(onPressed: (){setState(() {
-
-          });}, icon: Icon(Icons.refresh))
+          IconButton(
+              onPressed: () {
+                setState(() {});
+              },
+              icon: Icon(Icons.refresh))
         ],
         title: const Text('Terefas'),
       ),
@@ -78,19 +80,18 @@ class _InitialSceenState extends State<InitialSceen> {
                 }
                 return Text('Erro ao Carregar Tarefas');
             }
-            return const Text('Erro desconhecido');
           },
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (contextNew) => FormScreen(
-                        taskContext: context,
-                      ),
+            context,
+            MaterialPageRoute(
+              builder: (contextNew) => FormScreen(
+                taskContext: context,
               ),
+            ),
           ).then((value) => setState(() {
                 print('RECARREGANDO TELA');
               }));

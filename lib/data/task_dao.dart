@@ -12,6 +12,8 @@ class TaskDao {
   static const String _name = 'name';
   static const String _difficulty = 'difficulty';
   static const String _image = 'image';
+  static const String _level = 'level';
+
 
    save(Task tarefa) async {
     print('INICIANDO O SAVE: ');

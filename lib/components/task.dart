@@ -28,6 +28,38 @@ class _TaskState extends State<Task> {
     return true;
   }
 
+  showAlertDialog(BuildContext context) {
+    Widget cancelaButton = ElevatedButton(
+      child: Text("Cancelar"),
+      onPressed:  () {
+        Navigator.of(context).pop();
+      },
+    );
+    Widget continuaButton = ElevatedButton(
+      child: Text("Continar"),
+      onPressed:  () {
+        print("DELETANDO");
+        TaskDao().delete(widget.nome);
+        Navigator.of(context).pop();
+      },
+    );
+    //configura o AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Alerta"),
+      content: Text("Deseja deletar a Tarefa ?"),
+      actions: [
+        cancelaButton,
+        continuaButton,
+      ],
+    );
+    //exibe o diálogo
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
 
 
   @override
@@ -69,7 +101,7 @@ class _TaskState extends State<Task> {
                         child: asserOrNetwork() ? Image.asset(
                           widget.foto,
                           fit: BoxFit.cover,
-                        ): 
+                        ):
                         Image.network(widget.foto, fit: BoxFit.cover,),
                       ),
                     ),
@@ -94,7 +126,7 @@ class _TaskState extends State<Task> {
                       width: 52,
                       child: ElevatedButton(
                           onLongPress: (){
-                            TaskDao().delete(widget.nome);
+                            showAlertDialog(context);
                           },
                           onPressed: () {
                             setState(() {
