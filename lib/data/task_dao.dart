@@ -6,9 +6,10 @@ class TaskDao {
   static const String tableSql = 'CREATE TABLE $_tablename('
       '$_name TEXT, '
       '$_difficulty INTEGER, '
-      '$_image TEXT)';
+      '$_image TEXT,'
+      '$_level INTEGER)';
 
-  static const String _tablename = 'taskTable';
+  static const String _tablename = 'taskTable2';
   static const String _name = 'name';
   static const String _difficulty = 'difficulty';
   static const String _image = 'image';
@@ -35,6 +36,7 @@ class TaskDao {
     mapaDeTarefas[_name] = tarefa.nome;
     mapaDeTarefas[_difficulty] = tarefa.dificuldade;
     mapaDeTarefas[_image] = tarefa.foto;
+    mapaDeTarefas[_level] = tarefa.nivel;
     print('MAPA DE TAREFAS: $mapaDeTarefas');
     return mapaDeTarefas;
   }
@@ -53,7 +55,7 @@ class TaskDao {
     final List<Task> tarefas = [];
 
     for (Map<String, dynamic> linha in mapaDeTarefas) {
-      final Task tarefa = Task(linha[_name], linha[_image], linha[_difficulty]);
+      final Task tarefa = Task(linha[_name], linha[_image], linha[_difficulty], linha[_level]);
       tarefas.add(tarefa);
     }
     print(' LISTA DE TAREFAS $tarefas');

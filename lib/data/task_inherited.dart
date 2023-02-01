@@ -8,36 +8,36 @@ class TaskInherited extends InheritedWidget {
     required Widget child,
   }) : super(key: key, child: child);
 
-  final List<Task> taskList = [
-    Task(
-        'Aprender Flutter',
-        'assets/images/flutter.webp',
-        5),
-    Task(
-        'Aprender Java',
-        'assets/images/java.png',
-        2),
-    Task(
-        'Aprender C#',
-        'assets/images/c#.webp',
-        1),
-    Task(
-        'Aprender SQL',
-        'assets/images/sql.png',
-        3),
-    Task(
-        'Jogar',
-        'assets/images/jogar.webp',
-        1),
-    Task(
-        'Estudar inglês',
-        'assets/images/ingles.png',
-        1),
-  ];
+  final List<Task> taskList = [];
+  //   Task(
+  //       'Aprender Flutter',
+  //       'assets/images/flutter.webp',
+  //       5),
+  //   Task(
+  //       'Aprender Java',
+  //       'assets/images/java.png',
+  //       2),
+  //   Task(
+  //       'Aprender C#',
+  //       'assets/images/c#.webp',
+  //       1),
+  //   Task(
+  //       'Aprender SQL',
+  //       'assets/images/sql.png',
+  //       3),
+  //   Task(
+  //       'Jogar',
+  //       'assets/images/jogar.webp',
+  //       1),
+  //   Task(
+  //       'Estudar inglês',
+  //       'assets/images/ingles.png',
+  //       1),
+  // ];
 
   void newTask(String name, String photo, int difficulty)
   {
-    taskList.add(Task(name, photo, difficulty));
+    taskList.add(Task(name, photo, difficulty, 1));
   }
 
   static TaskInherited of(BuildContext context) {

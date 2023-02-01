@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciador_tarefas/components/task.dart';
 import 'package:gerenciador_tarefas/data/task_dao.dart';
-import 'package:gerenciador_tarefas/data/task_inherited.dart';
+
 
 class FormScreen extends StatefulWidget {
   const FormScreen({Key? key, required this.taskContext}) : super(key: key);
@@ -131,7 +131,7 @@ class _FormScreenState extends State<FormScreen> {
                       borderRadius: BorderRadius.circular(10),
                       child: Image.network(imageController.text, errorBuilder:
                           (BuildContext context, Object exeption,
-                          StackTrace? sttackTrace) {
+                              StackTrace? sttackTrace) {
                         return Image.asset('assets/images/semfoto.png');
                       }, fit: BoxFit.cover),
                     ),
@@ -144,8 +144,10 @@ class _FormScreenState extends State<FormScreen> {
                         print(difficultyController.text);
 
                         await TaskDao().save(Task(
-                            nameController.text, imageController.text,
-                            int.parse(difficultyController.text)));
+                            nameController.text,
+                            imageController.text,
+                            int.parse(difficultyController.text),
+                            1));
                         ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                                 content: Text('Criando uma nova Tarefa')));

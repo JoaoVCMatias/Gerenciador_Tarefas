@@ -7,10 +7,11 @@ class Task extends StatefulWidget {
   final String nome;
   final String foto;
   final int dificuldade;
+  int nivel;
 
-  Task(this.nome, this.foto, this.dificuldade, {Key? key})
+  Task(this.nome, this.foto, this.dificuldade, this.nivel,  {Key? key})
       : super(key: key);
-  int nivel = 0;
+
   @override
   State<Task> createState() => _TaskState();
 }
@@ -128,16 +129,21 @@ class _TaskState extends State<Task> {
                           onLongPress: (){
                             showAlertDialog(context);
                           },
-                          onPressed: () {
-                            setState(() {
+                          onPressed: () async {
+                            setState(()  {
                               if(widget.nivel < widget.dificuldade * 10)
                                 widget.nivel++;
                               else{
                                 widget.nivel = 1;
                                 corAtual < 5 ? corAtual++ : corAtual;
                               }
-
                             });
+                            print('SALVANDO ALTERAÇÃO');
+                            await TaskDao().save(Task(
+                                widget.nome,
+                                widget.foto,
+                                widget.dificuldade,
+                                widget.nivel));
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
