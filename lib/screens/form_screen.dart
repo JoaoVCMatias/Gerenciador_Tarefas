@@ -147,7 +147,7 @@ class _FormScreenState extends State<FormScreen> {
                             nameController.text,
                             imageController.text,
                             int.parse(difficultyController.text),
-                            1));
+                            1,1));
                         ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                                 content: Text('Criando uma nova Tarefa')));

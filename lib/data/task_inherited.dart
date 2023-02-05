@@ -37,7 +37,7 @@ class TaskInherited extends InheritedWidget {
 
   void newTask(String name, String photo, int difficulty)
   {
-    taskList.add(Task(name, photo, difficulty, 1));
+    taskList.add(Task(name, photo, difficulty, 1, 1));
   }
 
   static TaskInherited of(BuildContext context) {

@@ -8,8 +8,9 @@ class Task extends StatefulWidget {
   final String foto;
   final int dificuldade;
   int nivel;
+  int color;
 
-  Task(this.nome, this.foto, this.dificuldade, this.nivel,  {Key? key})
+  Task(this.nome, this.foto, this.dificuldade, this.nivel, this.color,  {Key? key})
       : super(key: key);
 
   @override
@@ -19,7 +20,7 @@ class Task extends StatefulWidget {
 class _TaskState extends State<Task> {
 
   var listarCor = {1 : Colors.blue, 2 : Colors.green, 3 : Colors.yellow, 4 : Colors.orange, 5 : Colors.red};
-  int corAtual = 1;
+  //int corAtual = 1;
 
   bool asserOrNetwork() {
     if(widget.foto.contains('http'))
@@ -73,7 +74,7 @@ class _TaskState extends State<Task> {
             //color: Colors.blue,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
-              color: listarCor[corAtual],
+              color: listarCor[widget.color],
             ),
             height: 140,
           ),
@@ -135,7 +136,7 @@ class _TaskState extends State<Task> {
                                 widget.nivel++;
                               else{
                                 widget.nivel = 1;
-                                corAtual < 5 ? corAtual++ : corAtual;
+                                widget.color < 5 ? widget.color++ : widget.color;
                               }
                             });
                             print('SALVANDO ALTERAÇÃO');
@@ -143,7 +144,9 @@ class _TaskState extends State<Task> {
                                 widget.nome,
                                 widget.foto,
                                 widget.dificuldade,
-                                widget.nivel));
+                                widget.nivel,
+                                widget.color
+                            ));
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

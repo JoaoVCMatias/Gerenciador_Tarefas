@@ -7,13 +7,15 @@ class TaskDao {
       '$_name TEXT, '
       '$_difficulty INTEGER, '
       '$_image TEXT,'
-      '$_level INTEGER)';
+      '$_level INTEGER,'
+      '$_color INTEGER)';
 
-  static const String _tablename = 'taskTable2';
+  static const String _tablename = 'taskTable3';
   static const String _name = 'name';
   static const String _difficulty = 'difficulty';
   static const String _image = 'image';
   static const String _level = 'level';
+  static const String _color = 'color';
 
 
    save(Task tarefa) async {
@@ -37,6 +39,7 @@ class TaskDao {
     mapaDeTarefas[_difficulty] = tarefa.dificuldade;
     mapaDeTarefas[_image] = tarefa.foto;
     mapaDeTarefas[_level] = tarefa.nivel;
+    mapaDeTarefas[_color] = tarefa.color;
     print('MAPA DE TAREFAS: $mapaDeTarefas');
     return mapaDeTarefas;
   }
@@ -55,7 +58,7 @@ class TaskDao {
     final List<Task> tarefas = [];
 
     for (Map<String, dynamic> linha in mapaDeTarefas) {
-      final Task tarefa = Task(linha[_name], linha[_image], linha[_difficulty], linha[_level]);
+      final Task tarefa = Task(linha[_name], linha[_image], linha[_difficulty], linha[_level], linha[_color]);
       tarefas.add(tarefa);
     }
     print(' LISTA DE TAREFAS $tarefas');
